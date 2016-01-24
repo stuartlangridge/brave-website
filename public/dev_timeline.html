@@ -671,7 +671,7 @@ The data-spy and data-target are part of the built-in Bootstrap scrollspy functi
                             
 
                             <!-- JotForm embedded version -->
-                            <form class="jotform-form" action="https://submit.jotform.us/submit/60207375294153/" method="post" name="form_60207375294153" id="60207375294153" accept-charset="utf-8" target="_blank">
+<!--                             <form class="jotform-form" action="https://submit.jotform.us/submit/60207375294153/" method="post" name="form_60207375294153" id="60207375294153" accept-charset="utf-8" target="_blank">
                               <input name="formID" value="60207375294153" type="hidden">
                                       <input placeholder="your@email.address" class=" form-textbox validate[Email]" id="input_1" name="q1_input1" style="width: 180px" value="" type="email" required aria-required="true">
                                         <button id="input_2" type="submit" class="btn-u btn-u-black ls-s-1" style="width: 180px;margin-top: 9px">
@@ -682,7 +682,17 @@ The data-spy and data-target are part of the built-in Bootstrap scrollspy functi
                               document.getElementById("si" + "mple" + "_spc").value = "60207375294153-60207375294153";
                               </script>
                             <input value="1453425133660_60207375294153_f66GtFt" name="event_id" type="hidden"></form>
-
+ -->
+                            <form id="formNewsletterSubscription" class="form-horizontal" onsubmit="return false">
+                              <input name="call" value="newsletter" type="hidden">
+                              <div class="form-group">
+                                  <input name="newsletteremail" type="email" class="form-textbox validate[Email]" style="width: 180px" id="newsletteremail" placeholder="Email" required aria-required="true">
+                              </div>
+                              <div class="form-group">
+                                  <button class="btn-u btn-u-black ls-s-1" style="width: 180px" id="formNewsletterSubscriptionSubmit">Stay In Touch</button>
+                              </div>
+                              <input value="cb26574db7" name="MC_LIST_ID" type="hidden">
+                            </form>
 
 
 
@@ -740,7 +750,7 @@ The data-spy and data-target are part of the built-in Bootstrap scrollspy functi
 <section>
 
 
-    <!-- Mailchimp Subscription Bootstrap Modal -->
+    <!-- Mailchimp Subscription Bootstrap Modals -->
     <div class="modal fade" id="mailchimpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -797,7 +807,20 @@ The data-spy and data-target are part of the built-in Bootstrap scrollspy functi
                       <input value="bb73405b3f" name="MC_LIST_ID" type="hidden">
                     </form>
 
-                    <div style="display: none" id="formRequestBuildThankYou">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="mailchimpNewsletterConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Success!</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div id="formRequestBuildThankYou">
                         <div style="text-align: center;font-weight: bold">
                             <img src="/assets/img/brave_logo_splash.png" alt="" style="width:60%" />
                             <p style="font-size: 120%">You are now in the queue for Brave! We have a waitlist but will send you a download link soon.</p>
@@ -809,6 +832,7 @@ The data-spy and data-target are part of the built-in Bootstrap scrollspy functi
             </div>
         </div>
     </div>
+
 
 
 

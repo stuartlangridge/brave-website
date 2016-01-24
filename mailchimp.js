@@ -10,8 +10,11 @@ var mcapi = require('mailchimp-api'),
 exports.api = function(request, reply) {
   var apiCallName = request.payload.call
   switch(apiCallName) {
+    case "newsletter":
+      listSubscribeNewsletter(request, reply)
+      break;
     case "getbrave":
-      postSubscription(request, reply)
+      listSubscribeBuildRequests(request, reply)
       break;
     default:
       reply(null)
@@ -23,7 +26,37 @@ exports.api = function(request, reply) {
  * POST subscribe an email to a list.
  */
 
-var postSubscription = function(request, reply) {
+var listSubscribeNewsletter = function(request, reply) {
+  var p = request.payload
+  if(
+      !p.MC_LIST_ID || !p.newsletteremail
+      || typeof p.MC_LIST_ID !== 'string'
+      || typeof p.newsletteremail !== 'string'
+    ) { reply(null) }
+  else {
+
+    var subscription =       {
+        "id":p.MC_LIST_ID,
+        "email":{email:p.newsletteremail}
+      }
+
+    mc.lists.subscribe(
+      subscription, 
+      function(data) {
+        reply(data)
+      },
+      function(error) {
+        if (error.error) {
+          console.log(error.code + ": " + error.error)
+        } else {
+          console.log('There was an error subscribing that user')
+        }
+        reply('error:' + error.code + ": " + error.error)
+      })
+  }  
+}
+
+var listSubscribeBuildRequests = function(request, reply) {
   var p = request.payload
   if(
       !p.MC_LIST_ID || !p.MERGE0
