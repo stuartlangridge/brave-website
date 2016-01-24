@@ -121,7 +121,8 @@ $("#formRequestBuildSubmit").on('click', function() {
        // contentType: "application/json; charset=utf-8",
        data: formData,
        error: function(err) {console.log('err',err)
-          $('#formRequestBuildSubmit').text(err.description);
+          // $('#formRequestBuildSubmit').text(err.description);
+            $("#formRequestBuild").html(err.responseText)
        },
        success: function(data) {console.log(data)
         if(data.euid)
@@ -131,7 +132,8 @@ $("#formRequestBuildSubmit").on('click', function() {
         else
         {
             console.log('failed',data)
-            $("#formRequestBuildSubmit").text(data)
+            // $("#formRequestBuildSubmit").text(data)
+            $("#formRequestBuild").html(data)
         }
        }
     });
