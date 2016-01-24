@@ -33,29 +33,30 @@ var postSubscription = function(request, reply) {
     ) { reply(null) }
   else {
 
-    var groupId
-    for(var prop in p.group) {
-      groupId = prop
-    }
-
-    var groups = p.group[groupId]
-    for (var i=0;i < groups.length;i++) {
-      if(typeof groups[i] !== 'string') { reply(null);return false }
-      if(groups[i] == 'false')
-        groups[i] = null
-    }
-
     var subscription =       {
         "id":p.MC_LIST_ID,
         "email":{email:p.MERGE0},
         "merge_vars": {
                   "NAME": p.MERGE1,
-                  "groupings": [{
-                            "id": groupId,
-                            "groups": groups
-                  }]
+                  "groupings": null
         }
       }
+
+    var groupId
+    for(var prop in p.group) {
+      groupId = prop
+    }
+    if(groupId) {
+      var groups = p.group[groupId]
+      for (var i=0;i < groups.length;i++) {
+        if(typeof groups[i] !== 'string') { reply(null);return false }
+        if(groups[i] == 'false')
+          groups[i] = null
+      }
+      subscription.merge_vars.groupings = [{
+                            "id": groupId,
+                            "groups": groups }]
+    }
 
     mc.lists.subscribe(
       subscription, 
