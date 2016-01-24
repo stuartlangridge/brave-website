@@ -122,7 +122,7 @@ $("#formRequestBuildSubmit").on('click', function() {
        data: formData,
        error: function(err) {console.log('err',err)
           // $('#formRequestBuildSubmit').text(err.description);
-            $("#formRequestBuild").html(err.responseText)
+            $("#formRequestBuild").html('<h2>'+err.responseText+'</h2>')
        },
        success: function(data) {console.log(data)
         if(data.euid)
