@@ -28,20 +28,20 @@ $("#formRequestBuildSubmit").on('click', function() {
   var formData = $('#formRequestBuild').serializeObject()
   if(formData.MERGE0 && formData.MERGE0 != '') {
     formData.call = 'getbrave'
-    ajaxPostInProgress = true
+    // ajaxPostInProgress = true
     $("#formRequestBuildSubmit").text('Sending...')
-    window.setTimeout(formPostTimedOut, 300);
+    // window.setTimeout(formPostTimedOut, 300);
     $.ajax({
        url: '/api/mailchimp',
        type: 'POST',
        dataType: 'json',
        data: formData,
        error: function(err) {console.log('err',err)
-          ajaxPostInProgress = false
+          // ajaxPostInProgress = false
           $("#formRequestBuild").html('<h2>'+err.responseText+'</h2>')
        },
        success: function(data) {
-          ajaxPostInProgress = false
+          // ajaxPostInProgress = false
           if(data.euid)
           {
             $("#formRequestBuild").html($('#formRequestBuildThankYou').html())
