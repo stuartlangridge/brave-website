@@ -1,11 +1,32 @@
 var Hapi = require('hapi')
+// var Glue = require('glue')
+// var Crumb = require('crumb')
 var assets = require('./assets.js')
 var mailchimp = require('./mailchimp.js') 
 
 var server = new Hapi.Server()
 server.connection({ port: process.env.PORT || 3000 })
 
-server.register(require('inert'), err => {
+var plugins = [
+  [
+    {
+        register: require('inert'),
+        options: {} 
+    }
+  ],
+  [
+    {
+        register: require('inert'),
+        options: {} 
+    },{
+        register: require('crumb'),
+        options: { cookieOptions: { isSecure: true } } 
+    }
+  ]
+] 
+
+
+server.register(plugins[0], err => {
   if (err) {
     throw err
   }
