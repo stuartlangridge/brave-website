@@ -24,25 +24,32 @@ exports.api = function(request, reply) {
  */
 
 var postSubscription = function(request, reply) {
-
-  if(request.payload.MC_LIST_ID) {
+  var p = request.payload
+  if(
+      !p.MC_LIST_ID || !p.MERGE0
+      || typeof p.MC_LIST_ID !== 'string'
+      || typeof p.MERGE0 !== 'string'
+      || (p.MERGE1 && typeof p.MERGE1 !== 'string')
+    ) { reply(null) }
+  else {
 
     var groupId
-    for(var prop in request.payload.group) {
+    for(var prop in p.group) {
       groupId = prop
     }
 
-    var groups = request.payload.group[groupId]
+    var groups = p.group[groupId]
     for (var i=0;i < groups.length;i++) {
+      if(typeof groups[i] !== 'string') { reply(null);return false }
       if(groups[i] == 'false')
         groups[i] = null
     }
 
     var subscription =       {
-        "id":request.payload.MC_LIST_ID,
-        "email":{email:request.payload.MERGE0},
+        "id":p.MC_LIST_ID,
+        "email":{email:p.MERGE0},
         "merge_vars": {
-                  "NAME": request.payload.MERGE1,
+                  "NAME": p.MERGE1,
                   "groupings": [{
                             "id": groupId,
                             "groups": groups
@@ -63,9 +70,7 @@ var postSubscription = function(request, reply) {
         }
         reply('error:' + error.code + ": " + error.error)
       })
-  }
-  else { reply(null) };
-
+  }  
 }
 
 

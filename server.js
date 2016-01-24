@@ -22,13 +22,19 @@ server.register(require('inert'), err => {
   })
 
   // API handlers
-  // server.route({
-  //   method: 'POST',
-  //   path: '/api/mailchimp',
-  //   handler: function (request, reply) {
-  //     mailchimp.api(request, reply)
-  //   }
-  // })
+  server.route({
+    method: 'POST',
+    path: '/api/mailchimp',
+    config: {
+      state: {
+        parse: false, // parse and store in request.state
+        failAction: 'ignore' // may also be 'ignore' or 'log'
+      }
+    },
+    handler: function (request, reply) {
+      mailchimp.api(request, reply)
+    }
+  })
 
   // A server redirect to our favorite band, Brave Combo.
   server.route({
