@@ -7,11 +7,14 @@ var mailchimp = require('./mailchimp.js')
 const server = new Hapi.Server()
 server.connection({ port: process.env.PORT || 3000 })
 
-server.register({ register: require('crumb'), options: { cookieOptions: { 
-  password: 'pass',
-  clearInvalid: true,
-  isSecure: false
- } } }, (err) => {
+var crumbOptions = { 
+  cookieOptions: { 
+    clearInvalid: true,
+    isSecure: false
+ } 
+}
+
+server.register({ register: require('crumb'), options: crumbOptions }, (err) => {
   if (err) {
     console.log('Failed to load crumb.')
   }
