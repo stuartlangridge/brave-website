@@ -1,62 +1,46 @@
-var Hapi = require('hapi')
-// var Glue = require('glue')
-// var Crumb = require('crumb')
-var assets = require('./assets.js')
-var mailchimp = require('./mailchimp.js') 
+'use strict';
 
-var server = new Hapi.Server()
+const Hapi = require('hapi')
+var assets = require('./assets.js')
+var mailchimp = require('./mailchimp.js')
+
+const server = new Hapi.Server()
 server.connection({ port: process.env.PORT || 3000 })
 
-var plugins = [
-  [
-    {
-        register: require('inert'),
-        options: {} 
-    }
-  ],
-  [
-    {
-        register: require('inert'),
-        options: {} 
-    },{
-        register: require('crumb'),
-        options: { cookieOptions: { isSecure: true } } 
-    }
-  ]
-] 
-
-
-server.register(plugins[0], err => {
+server.register({ register: require('crumb'), options: { cookieOptions: { 
+  password: 'pass',
+  clearInvalid: true,
+  isSecure: false
+ } } }, (err) => {
   if (err) {
-    throw err
+    console.log('Failed to load crumb.')
   }
+  
+  /* API endpoints */
 
-  server.ext('onPreResponse', function(request, reply) {
-    if (request.response.statusCode === 200) {
-      // send cache control headers for Fastly
-      // this will cache them at the fastly edge servers for a long
-      // period of time, but the browser clients will use the default
-      // cache-control settings and etags
-      request.response.headers['Surrogate-Control'] = 'max-age=2592000'
-    }
-    reply(request.response)
-  })
-
-  // API handlers
+  // mailchimp methods
   server.route({
-    method: 'POST',
-    path: '/api/mailchimp',
-    config: {
-      state: {
-        parse: false, // parse and store in request.state
-        failAction: 'ignore' // may also be 'ignore' or 'log'
+      method: 'POST',
+      path: '/api/mailchimp',
+      config: {
+        state: {
+          parse: true,
+          failAction: 'log' 
+        }
+      },
+      handler: function (request, reply) {
+        console.log('request',request)
+        mailchimp.api(request, reply)
       }
-    },
-    handler: function (request, reply) {
-      mailchimp.api(request, reply)
-    }
   })
 
+})
+
+server.register(require('inert'), (err) => {
+  if (err) {
+    console.log('Failed to load inert.')
+  }
+  
   // A server redirect to our favorite band, Brave Combo.
   server.route({
     method: 'GET',
@@ -69,23 +53,22 @@ server.register(plugins[0], err => {
   // Serves static files out of public/
   server.route({
     method: 'GET',
-    path: '/{param*}',
-    handler: {
-      directory: {
-        path: 'public',
-        listing: false,
-        index: true
-      }
-    },
+    path: '/{path*}',
     config: {
       state: {
-        parse: false,
-        failAction: 'ignore'
+        parse: true, 
+        failAction: 'log' 
+      }
+    },
+    handler: {
+      directory: {
+        path: './public'
       }
     }
   })
 
-  server.start(() => {
-    console.log('Server running at:', server.info.uri)
-  })
 })
+
+server.start(() => {
+    console.log('Brave server running at:', server.info.uri);
+});

@@ -1,14 +1,5 @@
 //TODO: add timeout handler and ui notification
 
-
-
-// var ajaxPostInProgress = false
-
-// var formPostTimedOut = function() {
-//   if(ajaxPostInProgress)
-//     $("#formRequestBuild").html('<h2>Something went wrong. Please refresh the page and try again.</h2>')
-// }
-
 $("#formRequestBuildSubmit").on('click', function() {
   var formData = $('#formRequestBuild').serializeObject()
   if(formData.MERGE0 && formData.MERGE0 != '') {
@@ -18,10 +9,19 @@ $("#formRequestBuildSubmit").on('click', function() {
       return false
     }
     formData.call = 'getbrave'
+    var crumb = getCookie('crumb')
+    if(!crumb) {
+      alert('cookie error: Please make sure cookies are enabled. You may need to delete your cookies and try again.')
+      return false
+    }
+    formData.crumb = crumb
     $("#formRequestBuildSubmit").text('Sending...')
     $.ajax({
        url: '/api/mailchimp',
        type: 'POST',
+       xhrFields: {
+          withCredentials: true
+       },
        dataType: 'json',
        data: formData,
        error: function(err) {console.log('err',err)
@@ -54,10 +54,19 @@ $("#formNewsletterSubscriptionSubmit").on('click', function() {
       return false
     }
     formData.call = 'newsletter'
+    var crumb = getCookie('crumb')
+    if(!crumb) {
+      alert('cookie error: Please make sure cookies are enabled. You may need to delete your cookies and try again.')
+      return false
+    }
+    formData.crumb = crumb
     $("#formNewsletterSubscriptionSubmit").text('Sending...')
     $.ajax({
        url: '/api/mailchimp',
        type: 'POST',
+       xhrFields: {
+          withCredentials: true
+       },
        dataType: 'json',
        data: formData,
        error: function(err) {console.log('err',err)
@@ -104,4 +113,13 @@ $.fn.serializeObject = function()
     return o
 }
 
-
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    }
+    return "";
+} 
