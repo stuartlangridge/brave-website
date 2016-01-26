@@ -10,7 +10,7 @@ server.connection({ port: process.env.PORT || 3000 })
 var crumbOptions = { 
   cookieOptions: { 
     clearInvalid: true,
-    isSecure: false
+    isSecure: true
  } 
 }
 
