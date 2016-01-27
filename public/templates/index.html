@@ -3,10 +3,8 @@
 {% block title %}Brave Software | Building a Better Web{% endblock %}
 
 {% block navMenu %}
+                    
                         <li class="home">
-                            <a href="#body">Introducing Brave</a>
-                        </li>
-                        <li>
                             <a href="#faster">Faster</a>
                         </li>
                         <li>
@@ -14,7 +12,7 @@
                         </li>
 
                          <li>
-                            <a href="#devs">Developers</a>
+                            <a href="#devs">Devs</a>
                         </li>
                         <li>
                             <a href="#team">Team</a>
@@ -24,7 +22,15 @@
                             <a href="#about">About</a>
 
                         </li>
+<li>
+                            <a href="#contact">Contact</a>
+                        </li>
 {% endblock %}
+                        <li>
+                            <a href="FAQ.html">FAQ</a>
+
+                        </li>
+
 
 {% block mainContent %}
             <!-- mobile slide alternative -->
@@ -500,53 +506,85 @@
         </div>
     </section>
 
-      <!-- About Section -->
+     <!--=== Content Part ===-->
+          <!-- About Section -->
 <section id="about">
     <div class="container content-md">
         <div class="row">
             <div class="col-sm-5 sm-margin-bottom-20">
-                <img class="img-responsive" src="assets/img/team/brendan_couch.jpg" alt="">
+                <BR><img class="img-responsive" src="assets/img/contents/bravery_menu_crop.png" alt="">
+            <HR>
+             <div class="col-sm-7 news">
+                    <ul class="list-inline posted-info">
+                        <a href="blogpost_2.html"><li><strong>January 27, 2016</strong></li>
+                        <li>How Brave Works for You</li>
+                        <li>By Brendan Eich</li></a><BR>
+                        <HR>
+                       <a href="blogpost_1.html"><li><strong>January 20, 2016</strong></li>
+                        <li>How to Fix the Web</li>
+                        <li>By Brendan Eich</li></a><BR>
+                        
+                     
+                       
+                    </ul>
+                   </div>
             </div>
+            
             <div class="col-sm-7 news-v3">
                 <div class="news-v3-in-sm no-padding">
                     <ul class="list-inline posted-info">
                         <li>By Brendan Eich</li>
                         <li>Founder, President and CEO</li>
-                        <li>Posted January 20, 2016</li>
+                        <li>Posted January 27, 2016</li>
                     </ul>
-                    <h2><a href="#">How to Fix the Web</a></h2>
-                    <p>The Web is always in trouble for some reason or other. I remember when Microsoft came after Netscape and threatened to lock Web standards into IE. Only the Web is so big, with such reach to billions of users, that no one owns it. This means it will always be contested ground.</p>
+                    <h2><a href="#">How Brave Works for You</a></h2>
+                    <p>Last week I wrote:</p>
+
+<p>
+“<strong>Brave is the only approach to the Web that puts users first in ownership and control of their browsing data by blocking trackers by default, with no exceptions.</strong>”</p>
+<p>
+Our premise is that the Web requires ads for much of its funding, but not the poorly performing ads and trackers that drive users to ad-blockers. And we want to enable micropayments as an alternative, without requiring infrastructure changes from websites and publishers. Finally, we must protect Brave users from tracking and malvertisement.</p>
+<p>
+This week I’d like to dive into the details of how Brave will achieve these goals of better ads for the Web, micropayments where users want them, and better revenue for everyone through cutting out the tracking middle-players. I will use examples based on the items from what we’re calling the <strong>Bravery Menu</strong>:</p>
                     <p>
-                    But the Web today faces a primal threat.</p>
+                    This mock user interface design will evolve to cover global defaults and site-specific override settings. It shows the major choices that Brave enables:
+</p>
+                    <UL>
+                    <li>
+                    You’re game to try our default mode of operation, for a better ad-supported Web. Just leave the <strong>Replace Ads</strong> item checked. This is the default mode of operation. We insert ads after blocking without hurting page load speed, and those ads will support the sites you browse. We choose ads based on browser-private user data with no remote tracking -- not even by our servers.</li>
+                    
+                    <li>You want to block all ads and trackers, but you’re not sure about our plan to insert better ads with high performance and privacy. You can do this with Brave by checking <strong>Block Ads</strong>. We want you on board even if you’re just blocking everything.
+</li>
+                    <li>You’d like to try Brave without ad blocking or replacing, to get whatever ads and trackers you would experience in other browsers. Check <strong>Allow Ads and Tracking</strong>. We still protect you with HTTPS Everywhere and other defense by default.
+</li></UL> 
+                    
+                    
+                    <p>
+                    Once you’ve chosen to replace, block, or allow ads and tracking, things get more interesting, since we give every person using Brave a <strong>user wallet</strong>. This feature will become available in the <a href= "https://brave.com/dev_timeline.html">coming months</a>, and we want you to draw from this wallet to support sites you favor with micropayments. The sites you micropay will be ad-free, even if you chose <strong>Replace Ads</strong> -- we won’t insert ads after blocking.
+</p>
+                    <ul><li>Replacing ads means you get the same share of gross ad revenue (15%) that we do. Once we have enough users to attract advertisers who meet our quality standards, this revenue will flow into your user wallet as payments arrive from the ad buyers. Again, the purpose of this revenue share is to support your preferred sites via micropayments.</li> 
+                        
+                        <li>You’ll also be able to add your own funds to your wallet, to micropay even more sites that you wish to support. Note that this option exists whether you block, replace, or allow ads.
+
+                        </li></ul>
+                    
                      <p>
-                    Some say the threat to the Web is “mobile”, but the Web is co-evolving with smartphones, not going away. Webviews are commonplace in apps, and no publisher of note is about to replace its primary website with a walled-garden equivalent. Nor can most websites hope to develop their own apps and convert their browser users to app-only users.</p>
+                     However you fill your wallet with enough funds to get started, you can choose to pay sites individually, or pay your top 20 sites with one click (the limit of 20 is adjustable), and go ad-free on those sites. You’ll pay a fixed amount per ad-free article you load each month, up to a monthly maximum that you can set.</p>
                      <p>
-                     I contend that the threat we face is ancient and, at bottom, human. Some call it advertising, others privacy. I view it as the <a href="https://en.wikipedia.org/wiki/Principal%E2%80%93agent_problem">Principal-Agent conflict of interest</a> woven into the fabric of the Web.</p>
+                     Payments accumulate as pending for the current month of browsing. Then at the end of the month, after a few days for you to finalize who gets paid, they will flow to the designated sites’ wallets. Thus you’ll have time to remove any sites or articles you don’t wish to support.
+</p>
                      <p>
-                     You use a browser to find and contribute information, but you generally do not pay for the websites who host that information. Across billions of people, for most sites in most countries, it isn’t realistic to expect anything but a free Web. And as <a href="https://stratechery.com/2015/tim-cooks-unfair-and-unrealistic-privacy-speech-strategy-credits-the-privacy-priority-problem/">Ben Thompson points out</a>, “free” means ad-supported in the main. Yes, successful sites and apps may convert you to a paying customer, but most won’t.</p>
-                     <p>
-                    You might object: “Hey, I’m ready to pay for websites I support”. I’m with you, but many people are not so well-off that they can support most of the commercial sites they use. Also, the Web missed an opportunity back in the early days to define payments and all they entail as a standard.</p>
+                    If your wallet balance goes to zero, you’ll revert to whichever replace/block/allow mode you chose as your default. With <Strong>Replace Ads</Strong>, as you resume browsing you’ll build up a new positive balance in your wallet. When the system is running at scale, <Strong>we hope that most users will be able to zero their wallets each month by micro-paying their top sites</Strong>, to reward those sites a bonus earned from ad replacement on other sites.
+</p>
                     <p>
-                    Once you grant this premise, that the Web needs ads in the large, it follows that your browsing habits will be surveilled, to the best of the ad ecosystem players’ abilities. Also, depending on how poorly ads are designed and integrated, you may become blind or averse to them. Since the ‘90s, I’ve seen several races to the bottom along these lines.</p>
+                    If you own a website, or even just a blog or other sub-domain on a hosting site, we’ll create a <strong>site wallet</strong> for you. Each month, we will deposit a large share of the revenue from all ads that performed on your pages, plus all the micropayments directed by users who support you, into your site wallet.  We aim to pay at least 55%, better than the current revenue share <a href="http://www.iab.net/media/file/PwC_IAB_Programmatic_Study.pdf" target="_blank">estimated at 45% or lower</a>. We hope that 70% to publishers is not out of reach, but we need to prove it.
+</p>
                     <p>
-                    The Principal (you) uses a browser (one of a layer of agents, both software and humans) to browse the Web and keep its lights on. Consider your primary agent, the browser. It’s a complex piece of code, but now thanks to Mozilla, WebKit, Chromium, and even in part Microsoft, this billion-dollar investment is available as a mix of free and open source software.</p>
+                    To get funds out of your wallet, you’ll need to certify your identity with our wallet partner, BitGo. We will detail this process in the forthcoming milestones as we build toward 1.0.</p>
                     <p>
-                    Yet thanks to tracking options that are inevitable with anything like the Web, your valuable and private user behavior and browsing intent signals can be extracted via your current browser. And that may not be a fair deal.</p>
+                        We believe this system, which puts users in charge of their Web experiences and helps create a direct relationship with their favored publishers, will finally reset the ad tech ecosystem in favor of consumers and content providers. <strong>This is a win-win for everyone who has a stake in the open Web and who is weary of giving up privacy and revenue to the ad-tech intermediaries and their high “ad tax”.</strong></p>
                     <p>
-                    Everyone’s talking about ad blocking. Blockers can make the user experience of the Web much better. But as <a href="https://marco.org/2015/09/18/just-doesnt-feel-good">Marco Arment noted</a>, they don’t feel good to many folks. They feel like free-riding, or even starting a war. You may never click on an ad, but even forming an impression from a viewable ad has some small value. With enough people blocking ads, the Web’s main funding model is in jeopardy.</p>
-                    <p>
-                    At Brave, we’re building a solution designed to avert war and give users the fair deal they deserve for coming to the Web to browse and contribute. We are building a new browser and a connected private cloud service with anonymous ads. Today we’re releasing the 0.7 developer version for early adopters and testers, along with open source and our roadmap.</p>
-                    <p>
-                    Brave browsers block everything: initial signaling/analytics scripts that start the programmatic advertising “dirty pipe”, impression-tracking pixels, and ad-click confirmation signals. By default Brave will insert ads only in a few standard-sized spaces. We find those spaces via a cloud robot (so users don't have to suffer, even a few canaries per screen size-profile, with ad delays and battery draining). We will target ads based on browser-side intent signals phrased in a standard vocabulary, and without a persistent user id or highly re-identifiable cookie.</p>
-                    <p>
-                    The browser sees everything you do, including actions to stop that annoying phenomenon of retargeting where an ad chases you around the Web, often for something you just bought or decided not to buy. We keep user data out of our cloud Brave Vault by default. It’s better for you and us that we don’t store any of your data without your permission.</p>
-                    <p>
-                    Thus we are a browser-based ad-tech platform, with high precision and privacy. What’s more, we aim to solve the Principal-Agent problem wherever it arises. Brave is the only approach to the Web that puts users first in ownership and control of their browsing data by blocking trackers by default, with no exceptions. The same could apply to other kinds of data, and with your help, we hope to grow big enough to serve users’ interests above all others’.</p>
-                    <p>
-                    In evolving systems like the Web, many players get stuck optimizing locally, no matter how much they think globally. Ad blockers may hope for better ads, but so far they seem to be having little effect. Publishers trying ad-blocker blockers may get a few local wins, but that path is an arms race. Brave brings innovation to bear across the whole Web system.</p>
-                    <p>
-                    <strong>Join us. With your help, we can fix the Web.</strong>
-                    </p>
+                
 
 
 
