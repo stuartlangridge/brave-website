@@ -87,7 +87,7 @@ server.register(require('inert'), (err) => {
 })
 
 server.ext('onRequest', function (request, reply) {
-    if (request.headers['x-forwarded-proto'] !== 'https') {
+    if (request.headers['x-forwarded-proto'] != 'https') {
       return reply()
         .redirect('https://' + request.headers.host + request.url.path)
         .code(301);
