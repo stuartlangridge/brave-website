@@ -962,15 +962,15 @@
 }
 
 /* mobile styles for social links */
-.team-v1 li > .hidden-sm {
+.team-v1 li > .visible-xs-block {
   margin: 0;
   padding: 0;
 }
-.team-v1 li > .hidden-sm li {
+.team-v1 li > .visible-xs-block li {
   list-style: none;
   display: inline-block;
 }
-.team-v1 li > .hidden-sm li i.icon-sm  {
+.team-v1 li > .visible-xs-block li i.icon-sm  {
   width: 24px;
   height: 24px;
   font-size: 14px;
