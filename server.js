@@ -36,6 +36,7 @@ server.register({ register: require('crumb'), options: crumbOptions }, (err) => 
             includeSubDomains: true,
             preload: true
           }
+          , xframe: true
         }
       },
       handler: function (request, reply) {
@@ -68,13 +69,14 @@ server.register(require('inert'), (err) => {
       state: {
         parse: true, 
         failAction: 'log' 
-      },
-      security: {
+      }
+      , security: {
         hsts: {
           maxAge: 31536000,
           includeSubDomains: true,
           preload: true
         }
+        , xframe: true
       }
     },
     handler: {
@@ -88,6 +90,9 @@ server.register(require('inert'), (err) => {
 
 server.ext('onRequest', function (request, reply) {
     if (request.headers['x-forwarded-proto'] != 'https') {
+  console.log('request.headers[x-forwarded-proto]',request.headers['x-forwarded-proto'])
+  console.log('process.env.PORT',process.env.PORT)
+  console.log('redirecting.. ','https://' + request.headers.host + request.url.path)
       return reply()
         .redirect('https://' + request.headers.host + request.url.path)
         .code(301);
