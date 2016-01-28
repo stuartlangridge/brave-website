@@ -29,6 +29,13 @@ server.register({ register: require('crumb'), options: crumbOptions }, (err) => 
         state: {
           parse: true,
           failAction: 'log' 
+        },
+        security: {
+          hsts: {
+            maxAge: 31536000,
+            includeSubDomains: true,
+            preload: true
+          }
         }
       },
       handler: function (request, reply) {
@@ -61,6 +68,13 @@ server.register(require('inert'), (err) => {
       state: {
         parse: true, 
         failAction: 'log' 
+      },
+      security: {
+        hsts: {
+          maxAge: 31536000,
+          includeSubDomains: true,
+          preload: true
+        }
       }
     },
     handler: {
