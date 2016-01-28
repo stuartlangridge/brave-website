@@ -897,19 +897,25 @@
   -webkit-transition: all 0.1s ease-in-out; 
 }
 
-.team-v1 li > .team-img li i.fa-twitter:hover {
-  color: #fff;
-  background: #3498db;
-  border-color: #3498db;
+.team-v1 li i:hover {
+  color: #333 !important;
+  background: #ccc;
+  border-color: #ccc !important;
 }
 
-.team-v1 li > .team-img li i.fa-facebook:hover {
+.team-v1 li i.fa-twitter:hover {
+  color: #fff !important;
+  background: #3498db !important;
+  border-color: #3498db !important;
+}
+
+.team-v1 li i.fa-facebook:hover {
   color: #fff;
   background: #4765a0;
   border-color: #4765a0;
 }
 
-.team-v1 li > .team-img li i.fa-google-plus:hover {
+.team-v1 li i.fa-google-plus:hover {
   color: #fff;
   background: #e74c3c;
   border-color: #e74c3c;
@@ -954,6 +960,23 @@
   width: 100%;
   background: #72c02c; 
 }
+
+/* mobile styles for social links */
+.team-v1 li > .hidden-sm {
+  margin: 0;
+  padding: 0;
+}
+.team-v1 li > .hidden-sm li {
+  list-style: none;
+  display: inline-block;
+}
+.team-v1 li > .hidden-sm li i.icon-sm  {
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+  line-height: 21px;
+}
+
 
 /*Team v2
 ------------------------------------*/
