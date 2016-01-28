@@ -86,6 +86,15 @@ server.register(require('inert'), (err) => {
 
 })
 
+server.ext('onRequest', function (request, reply) {
+    if (request.headers['x-forwarded-proto'] !== 'https') {
+      return reply()
+        .redirect('https://' + request.headers.host + request.url.path)
+        .code(301);
+    }
+    reply.continue()      
+})
+
 server.start(() => {
     console.log('Brave server running at:', server.info.uri);
 });
