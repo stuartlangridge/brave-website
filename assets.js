@@ -23,6 +23,7 @@ exports.jsSrc = [
   './public/assets/js/one.app.js',
   './public/assets/js/forms/login.js',
   './public/assets/js/forms/contact.js',
+  './public/assets/js/forms/mailchimp.js',
   './public/assets/js/plugins/pace-loader.js',
   './public/assets/js/plugins/owl-carousel.js',
   './public/assets/js/plugins/revolution-slider.js',
