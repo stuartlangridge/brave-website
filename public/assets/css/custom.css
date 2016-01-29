@@ -8,3 +8,13 @@
 li.invisible {
     visibility: hidden;
 }
+/*#layerslider .ls-slide .ls-s-1 {
+	left: 50px !important;
+}
+*/
+
+@media (min-width: 468px max-width:768px) {
+	#layerslider .ls-slide {
+		padding-top: 90px !important;
+	}
+}
