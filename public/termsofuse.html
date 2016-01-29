@@ -419,23 +419,39 @@ The data-spy and data-target are part of the built-in Bootstrap scrollspy functi
     <script type="text/javascript" src="assets/plugins/horizontal-parallax/js/sequence.jquery-min.js"></script>
     <script type="text/javascript" src="assets/plugins/horizontal-parallax/js/horizontal-parallax.js"></script>
 -->
-            <!-- Chartbeat -->
-            <script type="text/javascript">
- var _sf_async_config = { uid: 62395, domain: 'brave.com', useCanonical: true };
- (function() {
-   function loadChartbeat() {
-     window._sf_endpt = (new Date()).getTime();
-     var e = document.createElement('script');
-     e.setAttribute('language', 'javascript');
-     e.setAttribute('type', 'text/javascript');
-     e.setAttribute('src','//static.chartbeat.com/js/chartbeat.js');
-     document.body.appendChild(e);
-   };
-   var oldonload = window.onload;
-   window.onload = (typeof window.onload != 'function') ?
-     loadChartbeat : function() { oldonload(); loadChartbeat(); };
- })();
-            </script>
+    <!-- Chartbeat -->
+    <script type="text/javascript">
+     var _sf_async_config = { uid: 62395, domain: 'brave.com', useCanonical: true };
+     (function() {
+       function loadChartbeat() {
+         window._sf_endpt = (new Date()).getTime();
+         var e = document.createElement('script');
+         e.setAttribute('language', 'javascript');
+         e.setAttribute('type', 'text/javascript');
+         e.setAttribute('src','//static.chartbeat.com/js/chartbeat.js');
+         document.body.appendChild(e);
+       };
+       var oldonload = window.onload;
+       window.onload = (typeof window.onload != 'function') ?
+         loadChartbeat : function() { oldonload(); loadChartbeat(); };
+     })();
+    </script>
+
+    <!-- Piwik -->
+    <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u="https://brave.piwikpro.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+        </script>
+    <noscript><p><img src="https://brave.piwikpro.com/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
 
     <!-- JS Page Level-->
     <script src="assets/js/one.app.js"></script>
@@ -496,20 +512,5 @@ The data-spy and data-target are part of the built-in Bootstrap scrollspy functi
     <!--[if lt IE 10]>
         <script src="assets/plugins/sky-forms-pro/skyforms/js/jquery.placeholder.min.js"></script>
     <![endif]-->
-    <!-- Piwik -->
-    <script type="text/javascript">
-        var _paq = _paq || [];
-        _paq.push(['trackPageView']);
-        _paq.push(['enableLinkTracking']);
-        (function() {
-        var u="https://brave.piwikpro.com/";
-        _paq.push(['setTrackerUrl', u+'piwik.php']);
-        _paq.push(['setSiteId', 1]);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-        })();
-        </script>
-    <noscript><p><img src="https://brave.piwikpro.com/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
-    <!-- End Piwik Code -->
 </body>
 </html>
