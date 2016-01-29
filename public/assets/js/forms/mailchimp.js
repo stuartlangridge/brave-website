@@ -1,6 +1,7 @@
 //TODO: add timeout handler and ui notification
 
 $("#formRequestBuildSubmit").on('click', function() {
+  _paq.push(['trackEvent', 'SliderSignUpSubmission', 'Initiated'])
   var formData = $('#formRequestBuild').serializeObject()
   if(formData.MERGE0 && formData.MERGE0 != '') {
     if(!validateEmail(formData.MERGE0))
@@ -25,19 +26,20 @@ $("#formRequestBuildSubmit").on('click', function() {
        dataType: 'json',
        data: formData,
        error: function(err) {console.log('err',err)
-          // ajaxPostInProgress = false
           $("#formRequestBuild").html('<h2>'+err.responseText+'</h2>')
+          _paq.push(['trackEvent', 'SliderSignUpSubmission', 'Failed'])
        },
        success: function(data) {
           // ajaxPostInProgress = false
           if(data.euid)
           {
             $("#formRequestBuild").html($('#formRequestBuildThankYou').html())
+            _paq.push(['trackEvent', 'SliderSignUpSubmission', 'Success'])
           }
           else
           {
-            console.log('failed',data)
             $("#formRequestBuild").html(data)
+            _paq.push(['trackEvent', 'SliderSignUpSubmission', 'Failed'])
           }
        }
     });
@@ -45,6 +47,7 @@ $("#formRequestBuildSubmit").on('click', function() {
 })
 
 $("#formNewsletterSubscriptionSubmit").on('click', function() {
+  _paq.push(['trackEvent', 'NewsletterSignUpSubmission', 'Initiated'])
   var formData = $('#formNewsletterSubscription').serializeObject()
   console.log(formData)
   if(formData.newsletteremail && formData.newsletteremail != '') {
@@ -71,6 +74,7 @@ $("#formNewsletterSubscriptionSubmit").on('click', function() {
        data: formData,
        error: function(err) {console.log('err',err)
           alert(err.responseText)
+          _paq.push(['trackEvent', 'NewsletterSignUpSubmission', 'Failed'])
        },
        success: function(data) {
           console.log(data)
@@ -80,11 +84,13 @@ $("#formNewsletterSubscriptionSubmit").on('click', function() {
             $("#formNewsletterSubscriptionSubmit").text('Subscribed!')
             $("#formNewsletterSubscriptionSubmit").attr('disabled',true)
             $("#newsletteremail").attr('disabled',true)
+            _paq.push(['trackEvent', 'NewsletterSignUpSubmission', 'Success'])
           }
           else
           {
             console.log('failed',data)
             alert(data)
+            _paq.push(['trackEvent', 'NewsletterSignUpSubmission', 'Failed'])
           }
        }
     });
