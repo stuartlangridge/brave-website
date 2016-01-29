@@ -1,7 +1,7 @@
 //TODO: add timeout handler and ui notification
 
 $("#formRequestBuildSubmit").on('click', function() {
-  _paq.push(['trackEvent', 'SliderSignUpSubmission', 'Initiated'])
+  _paq.push(['trackEvent', 'FormSubmissions', 'SliderDevBuildSignUp', 'Submitted'])
   var formData = $('#formRequestBuild').serializeObject()
   if(formData.MERGE0 && formData.MERGE0 != '') {
     if(!validateEmail(formData.MERGE0))
@@ -27,19 +27,19 @@ $("#formRequestBuildSubmit").on('click', function() {
        data: formData,
        error: function(err) {
           $("#formRequestBuild").html('<h2>'+err.responseText+'</h2>')
-          _paq.push(['trackEvent', 'SliderSignUpSubmission', 'Failed'])
+          _paq.push(['trackEvent', 'FormSubmissions', 'SliderDevBuildSignUp', 'Error'])
        },
        success: function(data) {
           // ajaxPostInProgress = false
           if(data.euid)
           {
             $("#formRequestBuild").html($('#formRequestBuildThankYou').html())
-            _paq.push(['trackEvent', 'SliderSignUpSubmission', 'Success'])
+            _paq.push(['trackEvent', 'FormSubmissions', 'SliderDevBuildSignUp', 'Success'])
           }
           else
           {
             $("#formRequestBuild").html(data)
-            _paq.push(['trackEvent', 'SliderSignUpSubmission', 'Failed'])
+            _paq.push(['trackEvent', 'FormSubmissions', 'SliderDevBuildSignUp', 'Failed'])
           }
        }
     });
@@ -47,7 +47,7 @@ $("#formRequestBuildSubmit").on('click', function() {
 })
 
 $("#formNewsletterSubscriptionSubmit").on('click', function() {
-  _paq.push(['trackEvent', 'NewsletterSignUpSubmission', 'Initiated'])
+  _paq.push(['trackEvent', 'FormSubmissions', 'FooterNewsletterSignUp', 'Submitted'])
   var formData = $('#formNewsletterSubscription').serializeObject()
   if(formData.newsletteremail && formData.newsletteremail != '') {
     if(!validateEmail(formData.newsletteremail))
@@ -73,7 +73,7 @@ $("#formNewsletterSubscriptionSubmit").on('click', function() {
        data: formData,
        error: function(err) {
           alert(err.responseText)
-          _paq.push(['trackEvent', 'NewsletterSignUpSubmission', 'Failed'])
+          _paq.push(['trackEvent', 'FormSubmissions', 'FooterNewsletterSignUp', 'Error'])
        },
        success: function(data) {
           if(data.euid)
@@ -82,12 +82,12 @@ $("#formNewsletterSubscriptionSubmit").on('click', function() {
             $("#formNewsletterSubscriptionSubmit").text('Subscribed!')
             $("#formNewsletterSubscriptionSubmit").attr('disabled',true)
             $("#newsletteremail").attr('disabled',true)
-            _paq.push(['trackEvent', 'NewsletterSignUpSubmission', 'Success'])
+            _paq.push(['trackEvent', 'FormSubmissions', 'FooterNewsletterSignUp', 'Success'])
           }
           else
           {
             alert(data)
-            _paq.push(['trackEvent', 'NewsletterSignUpSubmission', 'Failed'])
+            _paq.push(['trackEvent', 'FormSubmissions', 'FooterNewsletterSignUp', 'Failed'])
           }
        }
     });
