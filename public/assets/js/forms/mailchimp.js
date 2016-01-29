@@ -49,7 +49,6 @@ $("#formRequestBuildSubmit").on('click', function() {
 $("#formNewsletterSubscriptionSubmit").on('click', function() {
   _paq.push(['trackEvent', 'NewsletterSignUpSubmission', 'Initiated'])
   var formData = $('#formNewsletterSubscription').serializeObject()
-  console.log(formData)
   if(formData.newsletteremail && formData.newsletteremail != '') {
     if(!validateEmail(formData.newsletteremail))
     {
@@ -77,7 +76,6 @@ $("#formNewsletterSubscriptionSubmit").on('click', function() {
           _paq.push(['trackEvent', 'NewsletterSignUpSubmission', 'Failed'])
        },
        success: function(data) {
-          console.log(data)
           if(data.euid)
           {
             $("#mailchimpNewsletterConfirmationModal").modal('show')
