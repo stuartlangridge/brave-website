@@ -25,7 +25,7 @@ $("#formRequestBuildSubmit").on('click', function() {
        },
        dataType: 'json',
        data: formData,
-       error: function(err) {console.log('err',err)
+       error: function(err) {
           $("#formRequestBuild").html('<h2>'+err.responseText+'</h2>')
           _paq.push(['trackEvent', 'SliderSignUpSubmission', 'Failed'])
        },
@@ -71,7 +71,7 @@ $("#formNewsletterSubscriptionSubmit").on('click', function() {
        },
        dataType: 'json',
        data: formData,
-       error: function(err) {console.log('err',err)
+       error: function(err) {
           alert(err.responseText)
           _paq.push(['trackEvent', 'NewsletterSignUpSubmission', 'Failed'])
        },
@@ -86,7 +86,6 @@ $("#formNewsletterSubscriptionSubmit").on('click', function() {
           }
           else
           {
-            console.log('failed',data)
             alert(data)
             _paq.push(['trackEvent', 'NewsletterSignUpSubmission', 'Failed'])
           }
