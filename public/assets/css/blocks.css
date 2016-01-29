@@ -976,6 +976,11 @@
   font-size: 14px;
   line-height: 21px;
 }
+@media (max-width: 768px) {
+  .team-v1 .team-img ul {
+    display: none !important;
+  }
+}
 
 
 
