@@ -47,6 +47,7 @@ $("#formRequestBuildSubmit").on('click', function() {
 })
 
 $("#formNewsletterSubscriptionSubmit").on('click', function() {
+  _paq.push(['trackEvent', 'NewsletterSignUpSubmission', 'Initiated'])
   var formData = $('#formNewsletterSubscription').serializeObject()
   console.log(formData)
   if(formData.newsletteremail && formData.newsletteremail != '') {
@@ -73,6 +74,7 @@ $("#formNewsletterSubscriptionSubmit").on('click', function() {
        data: formData,
        error: function(err) {console.log('err',err)
           alert(err.responseText)
+          _paq.push(['trackEvent', 'NewsletterSignUpSubmission', 'Failed'])
        },
        success: function(data) {
           console.log(data)
@@ -82,11 +84,13 @@ $("#formNewsletterSubscriptionSubmit").on('click', function() {
             $("#formNewsletterSubscriptionSubmit").text('Subscribed!')
             $("#formNewsletterSubscriptionSubmit").attr('disabled',true)
             $("#newsletteremail").attr('disabled',true)
+            _paq.push(['trackEvent', 'NewsletterSignUpSubmission', 'Success'])
           }
           else
           {
             console.log('failed',data)
             alert(data)
+            _paq.push(['trackEvent', 'NewsletterSignUpSubmission', 'Failed'])
           }
        }
     });
