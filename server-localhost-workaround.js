@@ -16,7 +16,7 @@ var connections = [
       // localhost
       {
           host: 'localhost',
-          port: 3001,
+          port: 3000,
           tls: {
             key: fs.readFileSync('./server.key'),     // Path to key
             cert: fs.readFileSync('./server.crt'),      // Path to self-signed Certificate
