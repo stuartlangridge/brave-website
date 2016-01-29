@@ -14,7 +14,7 @@ var LayerSlider = function () {
                     hideUnder: 480,
                     navButtons: false,
                     navStartStop: false,
-                    height: 460,
+                    height: 480,
 			        skinsPath: 'assets/plugins/layer-slider/layerslider/skins/'
 			    });
 		        jQuery("#layerslidermobile").layerSlider({
