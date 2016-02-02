@@ -488,7 +488,7 @@ The data-spy and data-target are part of the built-in Bootstrap scrollspy functi
             }
             // Set the csrf cookie because somehow it's not getting set consistently on master
             // This may set the cookie twice but that's fine
-            document.cookie = document.cookie + "; crumb=" + Math.random().toString();
+            document.cookie = "crumb=" + Math.random().toString() + "; max-age=3600";
         });
         window.onhashchange = function() {
             if (window.location.hash && window.location.hash !== '#body') {
