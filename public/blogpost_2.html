@@ -596,6 +596,9 @@ This week I’d like to dive into the details of how Brave will achieve these go
             if (window.location.hash && window.location.hash !== '#body') {
                 showSmallLogo()
             }
+            // Set the csrf cookie because somehow it's not getting set consistently on master
+            // This may set the cookie twice but that's fine
+            document.cookie = document.cookie + "; crumb=" + Math.random.toString();
         });
         window.onhashchange = function() {
             if (window.location.hash && window.location.hash !== '#body') {
