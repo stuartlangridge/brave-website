@@ -470,7 +470,10 @@ The data-spy and data-target are part of the built-in Bootstrap scrollspy functi
             }
             // Set the csrf cookie because somehow it's not getting set consistently on master
             // This may set the cookie twice but that's fine
-            document.cookie = "crumb=" + Math.random().toString() + "; max-age=3600";
+            // document.cookie = "crumb=" + Math.random().toString() + "; max-age=3600";
+            // Not sure how that works
+            // crumb cookies look like this: "crumb=b1mVOGegIseaKwW0WUYW6TFR5_KrGdSFzf0ZYs51SB6; Secure; Path=/"
+            // A random decimal doesn't match the crumb the server sent as Set-Cookie in response header
         });
         window.onhashchange = function() {
             if (window.location.hash && window.location.hash !== '#body') {

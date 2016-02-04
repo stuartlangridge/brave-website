@@ -70,6 +70,29 @@ server.register({ register: require('crumb'), options:
       }
   })
 
+  // crumb
+  server.route({
+      method: 'GET',
+      path: '/api/crumb',
+      config: {
+        state: {
+          parse: true,
+          failAction: 'log' 
+        },
+        security: {
+          hsts: {
+            maxAge: 31536000,
+            includeSubDomains: true,
+            preload: true
+          }
+          , xframe: true
+        }
+      },
+      handler: function (request, reply) {
+        reply({cookie: request.headers.cookie})
+      }
+  })
+
 })
 
 server.register(require('inert'), (err) => {
