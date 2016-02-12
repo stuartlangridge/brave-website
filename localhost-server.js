@@ -1,3 +1,6 @@
+/* jshint asi: true */
+/* jshint esversion: 6 */
+
 'use strict'
 
 const Hapi = require('hapi')
@@ -75,6 +78,7 @@ server.register([{
   register: require('hapi-permanent-redirect'),
   options: {
     redirects: [
+      { from: '/privacy_android', to: '/android_privacy.html' },
       { from: '/privacy_ios', to: '/ios_privacy.html' },
       { from: '/terms_of_use', to: '/termsofuse.html' },
     ]
