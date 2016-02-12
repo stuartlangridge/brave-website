@@ -44,6 +44,16 @@ server.register({ register: require('crumb'), options:
       }
   })
 
+server.register([{
+  register: require('hapi-permanent-redirect'),
+  options: {
+    redirects: [
+      { from: '/privacy_ios', to: '/ios_privacy.html' },
+      { from: '/terms_of_use', to: '/termsofuse.html' },
+    ]
+  }
+}], (err) => {
+  if (err) console.log('Failed to load hapi-permanent-redirect')
 })
 
 server.register(require('inert'), (err) => {
