@@ -43,6 +43,7 @@ server.register({ register: require('crumb'), options:
         mailchimp.api(request, reply)
       }
   })
+})
 
 server.register([{
   register: require('hapi-permanent-redirect'),
