@@ -1,3 +1,6 @@
+/* jshint asi: true */
+/* jshint esversion: 6 */
+
 'use strict'
 
 const Hapi = require('hapi')
