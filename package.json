@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "./node_modules/.bin/babel-node server.js",
+    "start-localhost": "./node_modules/.bin/babel-node localhost-server.js",
     "lint": "standard",
     "build": "staticjinja build --srcpath=./public/templates --outpath=./public",
     "postinstall": "npm run build && ./node_modules/.bin/gulp"

@@ -72,20 +72,13 @@ server.register({ register: require('crumb'), options:
 
 })
 
-server.register([{
-  register: require('hapi-permanent-redirect'),
-  options: {
-    redirects: [
-      { from: '/privacy_android', to: '/android_privacy.html' },
-      { from: '/privacy_ios', to: '/ios_privacy.html' },
-      { from: '/terms_of_use', to: '/termsofuse.html' },
-    ]
-  }
-}], (err) => {
-  if (err) console.log('Failed to load hapi-permanent-redirect')
-})
-
 server.register(require('inert'), (err) => {
+  var map = [
+      { path: '/privacy_android', file: '/public/android_privacy.html' },
+      { path: '/privacy_ios', file: '/public/ios_privacy.html' },
+      { path: '/terms_of_use', file: './public/tos.html' }
+  ]
+
   if (err) {
     console.log('Failed to load inert.')
   }
@@ -97,6 +90,16 @@ server.register(require('inert'), (err) => {
     handler: function (request, reply) {
       reply.redirect('http://bravecombo.com/' + (request.params.path ? request.params.path : ''))
     }
+  })
+
+  map.forEach((entry) => {
+    server.route({
+      method: 'GET',
+      path: entry.path,
+      handler: function (request, reply) {
+        reply.file(entry.file)
+      }
+    })
   })
 
   // Serves static files out of public/
